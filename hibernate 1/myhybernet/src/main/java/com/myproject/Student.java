@@ -7,10 +7,13 @@ public class Student {
 
 	@Id
 	private int id;
-	
+
 	private String nameString;
-	
+
 	private String cityString;
+	
+	private Certificate certificate;
+	
 
 	public Student(int id, String nameString, String cityString) {
 		super();
@@ -47,7 +50,15 @@ public class Student {
 	public void setCityString(String cityString) {
 		this.cityString = cityString;
 	}
+
+	public Certificate getCertificate() {
+		return certificate;
+	}
+
+	public void setCertificate(Certificate certificate) {
+		this.certificate = certificate;
+	}
 	
 	
-	
+
 }

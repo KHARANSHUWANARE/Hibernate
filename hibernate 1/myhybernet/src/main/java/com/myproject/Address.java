@@ -20,23 +20,23 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int addressid;
-	
-	@Column(name = "street" , length = 50)
+
+	@Column(name = "street", length = 50)
 	private String streetString;
-	
-	@Column(name = "city" , length = 80)
+
+	@Column(name = "city", length = 80)
 	private String cityString;
-	
+
 	@Column(name = "is_open")
 	private boolean isOpen;
-	
+
 	@Transient
 	private double x;
-	
+
 	@Column(name = "added_date")
 	@Temporal(TemporalType.DATE)
 	private LocalDate adddateDate;
-	
+
 	@Lob
 	private byte[] images;
 
@@ -119,9 +119,5 @@ public class Address {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	
-	
 
 }

@@ -1,5 +1,8 @@
 package com.myproject;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 
 import org.hibernate.*;
@@ -25,31 +28,66 @@ public class App {
 		student.setId(1);
 
 		student.setNameString("pratik");
-		
+
 		Address address = new Address();
-		
+
 		address.setStreetString("hingna");
-		
+
 		address.setCityString("nagpur");
-		
+
 		address.setOpen(true);
-		
+
 		address.setX(88.96);
-		
+
 		LocalDate localDate = LocalDate.now();
-		
+
 		address.setAdddateDate(localDate);
+
+		// add image in db
+
+		try {
+			// file input stram throws filenotfound exception
+			FileInputStream fileInputStream = new FileInputStream("src/main/java/one.jpg");
+			try {
+				// byte throws ioexception
+				byte[] imageInByte = new byte[fileInputStream.available()];
+				fileInputStream.read(imageInByte);
+				address.setImages(imageInByte);
+			} catch (IOException e) {
+
+				e.printStackTrace();
+			}
+
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+		}
+
 		Session session = sessionFactory.openSession();
 
 		Transaction transaction = session.beginTransaction();
 
-		session.save(student);
+		try {
+
+			session.save(student);
+
+			session.save(address);
+
+			transaction.commit();
+
+			session.close();
+
+		} catch (Exception e) {
 		
-		session.save(address);
+			transaction.rollback();
 
-		transaction.commit();
+			System.out.println(e);
+		}
 
-		session.close();
+		finally {
+			session.close();
+
+		}
 
 	}
 }
