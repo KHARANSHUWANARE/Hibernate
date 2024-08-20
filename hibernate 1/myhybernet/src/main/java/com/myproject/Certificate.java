@@ -33,7 +33,7 @@ public class Certificate {
 
 	public Certificate() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	

@@ -13,11 +13,12 @@
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hbm2ddl.auto">create</property>
 		<property name="show_sql">true</property>
-		
+		<!--
 		<mapping class="com.myproject.Student" />
 		<mapping class="com.myproject.Address"/>
-		
-		
+		-->
+		<mapping class="com.myproject.mappingdemo.Question"/>
+		<mapping class="com.myproject.mappingdemo.Answer"/>
 	</session-factory>
 
 </hibernate-configuration>
